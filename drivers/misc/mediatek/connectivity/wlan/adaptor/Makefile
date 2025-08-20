@@ -6,7 +6,7 @@ ifneq ($(KERNEL_OUT),)
 endif
 
 ifndef TOP
-    TOP := $(srctree)/../..
+    TOP := $(srctree)/..
 endif
 
 # Force build fail on modpost warning
@@ -14,20 +14,21 @@ KBUILD_MODPOST_FAIL_ON_WARNINGS := y
 
 ccflags-y += \
     -I$(srctree)/drivers/misc/mediatek/include/mt-plat \
-    -I$(TOP)/vendor/mediatek/kernel_modules/connectivity/common/common_main/include \
-    -I$(TOP)/vendor/mediatek/kernel_modules/connectivity/common/common_main/linux/include
+    -I$(srctree)/drivers/misc/mediatek/connectivity/common/common_main/include \
+    -I$(srctree)/drivers/misc/mediatek/connectivity/common/common_main/linux/include
 
-ifeq ($(ADAPTOR_OPTS),CONNAC2X2_SOC3_0)
-ccflags-y += -I$(TOP)/vendor/mediatek/kernel_modules/connectivity/conninfra/include
-ccflags-y += -I$(TOP)/vendor/mediatek/kernel_modules/connectivity/conninfra/debug_utility
-ccflags-y += -I$(TOP)/vendor/mediatek/kernel_modules/connectivity/conninfra/debug_utility/include
-ccflags-y += -I$(TOP)/vendor/mediatek/kernel_modules/connectivity/conninfra/debug_utility/connsyslog
-ccflags-y += -I$(TOP)/vendor/mediatek/kernel_modules/connectivity/conninfra/debug_utility/coredump
+ifeq ($(CONNAC_VER), 2_0)
+ccflags-y += -I$(srctree)/drivers/misc/mediatek/connectivity/conninfra/include
+ccflags-y += -I$(srctree)/drivers/misc/mediatek/connectivity/conninfra/debug_utility
+ccflags-y += -I$(srctree)/drivers/misc/mediatek/connectivity/conninfra/debug_utility/include
+ccflags-y += -I$(srctree)/drivers/misc/mediatek/connectivity/conninfra/debug_utility/connsyslog
+ccflags-y += -I$(srctree)/drivers/misc/mediatek/connectivity/conninfra/debug_utility/coredump
 endif
 
 ifneq ($(CONFIG_MTK_CONNSYS_DEDICATED_LOG_PATH),)
 ccflags-y += -DCONFIG_MTK_CONNSYS_DEDICATED_LOG_PATH
-ccflags-y += -I$(TOP)/vendor/mediatek/kernel_modules/connectivity/common/debug_utility
+ccflags-y += -I$(srctree)/drivers/misc/mediatek/connectivity/common/debug_utility
+ccflags-y += -I$(src)/include
 endif
 
 ifeq ($(CONFIG_MTK_CONN_LTE_IDC_SUPPORT),y)
@@ -36,7 +37,7 @@ else
     ccflags-y += -DWMT_IDC_SUPPORT=0
 endif
 
-ifeq ($(ADAPTOR_OPTS),CONNAC2X2_SOC3_0)
+ifeq ($(CONNAC_VER), 2_0)
 ccflags-y += -DCFG_ANDORID_CONNINFRA_SUPPORT=1
 ccflags-y += -DCFG_ANDORID_CONNINFRA_COREDUMP_SUPPORT=1
 else
@@ -61,7 +62,9 @@ endif
 $(MODULE_NAME)-objs += wmt_cdev_wifi.o
 ifneq ($(CONFIG_MTK_CONNSYS_DEDICATED_LOG_PATH),)
 $(MODULE_NAME)-objs += fw_log_wifi.o
+$(MODULE_NAME)-objs += fw_log_ics.o
+$(MODULE_NAME)-objs += wlan_ring.o
 endif
-ifeq ($(ADAPTOR_OPTS),CONNAC2X2_SOC3_0)
+ifeq ($(CONNAC_VER), 2_0)
 $(MODULE_NAME)-objs += wifi_pwr_on.o
 endif
