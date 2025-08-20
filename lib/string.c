@@ -1213,3 +1213,19 @@ fail:
 
 module_init(string_selftest_init);
 #endif	/* CONFIG_STRING_SELFTEST */
+#ifndef __HAVE_ARCH_STPCPY
+/**
+ * stpcpy - copy a string from src to dest returning a pointer to the new end
+ *          of dest, including the trailing %NUL byte.
+ * @dest: pointer to start of string to copy into
+ * @src: pointer to start of null-terminated string to copy from
+ *
+ */
+char *stpcpy(char *dest, const char *src)
+{
+    while ((*dest++ = *src++) != '\0')
+        /* nothing */;
+    return dest - 1;
+}
+EXPORT_SYMBOL(stpcpy);
+#endif
