@@ -488,3 +488,4 @@ static inline void memcpy_and_pad(void *dest, size_t dest_len,
 }
 
 #endif /* _LINUX_STRING_H_ */
+extern char *stpcpy(char *__restrict__, const char *__restrict__);
