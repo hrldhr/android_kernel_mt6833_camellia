@@ -13,7 +13,6 @@
 
 #$(call all-subdir-src-or-makefile)
 export MTK_PLATFORM := $(subst ",,$(CONFIG_MTK_PLATFORM))
-subdir-ccflags-y += -Werror
 
 subdir-ccflags-y += -I$(srctree)/drivers/misc/mediatek/include
 subdir-ccflags-y += -I$(srctree)/drivers/misc/mediatek/include/mt-plat/$(MTK_PLATFORM)/include/
@@ -161,6 +160,7 @@ obj-$(CONFIG_MTK_VOW_SUPPORT)  += vow/
 obj-y += io_boost/
 obj-y += mtprintk/
 ifneq ($(wildcard $(srctree)/drivers/misc/mediatek/met_drv/),)
+obj-y += met_drv_v2/
 obj-y += met_drv/
 endif
 obj-y += perf/
@@ -176,3 +176,6 @@ obj-y += subpmic/
 obj-$(CONFIG_MTK_OTP) += otp/
 # BSP.System - 2020.11.2 - add simtray status
 obj-y += simtray/
+
+# Import mediatek UDC driver
+obj-$(CONFIG_MTK_UDC) += udc/
