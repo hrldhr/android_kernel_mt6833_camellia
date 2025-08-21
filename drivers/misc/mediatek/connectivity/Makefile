@@ -62,9 +62,9 @@ endif
         PATH_TO_WLAN_CHR_DRV = $(srctree)/drivers/misc/mediatek/connectivity/wlan/adaptor
         PATH_TO_WLAN_DRV     = $(srctree)/drivers/misc/mediatek/connectivity/wlan/core/gen4m
 
-        ABS_PATH_TO_WMT_DRV      = $(srctree)/$(PATH_TO_WMT_DRV)
-        ABS_PATH_TO_WLAN_CHR_DRV = $(srctree)/$(PATH_TO_WLAN_CHR_DRV)
-        ABS_PATH_TO_WLAN_DRV     = $(srctree)/$(PATH_TO_WLAN_DRV)
+        ABS_PATH_TO_WMT_DRV      = $(PATH_TO_WMT_DRV)
+        ABS_PATH_TO_WLAN_CHR_DRV = $(PATH_TO_WLAN_CHR_DRV)
+        ABS_PATH_TO_WLAN_DRV     = $(PATH_TO_WLAN_DRV)
 
         # check wlan driver folder
         ifeq (,$(wildcard $(ABS_PATH_TO_WMT_DRV)))
