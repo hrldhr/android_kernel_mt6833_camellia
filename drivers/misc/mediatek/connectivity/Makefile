@@ -118,19 +118,19 @@ endif
         obj-y += wlan/core/gen4m/
 
         # For BT built-in mode start @{
-        # ifneq (,$(filter $(CONFIG_MTK_COMBO_CHIP), "CONSYS_6885"))
-        #     PATH_TO_BT_DRV       = $(srctree)/drivers/misc/mediatek/connectivity/bt/mt66xx/connac2
-        #     export _MTK_BT_CHIP=MTK_CONSYS_MT6885
-        # else ifneq (,$(filter $(CONFIG_MTK_COMBO_CHIP), "CONSYS_6893"))
-        #     PATH_TO_BT_DRV       = $(srctree)/drivers/misc/mediatek/connectivity/bt/mt66xx/connac2
-        #     export _MTK_BT_CHIP=MTK_CONSYS_MT6893
-        # else
-        #     PATH_TO_BT_DRV       = $(srctree)/drivers/misc/mediatek/connectivity/bt/mt66xx/legacy
-        # endif
-        # ABS_PATH_TO_BT_DRV       = $(PATH_TO_BT_DRV)
-        # $(shell unlink $(srctree)/$(src)/bt)
-        # $(shell ln -s $(ABS_PATH_TO_BT_DRV)      $(srctree)/$(src)/bt)
-        # obj-y += bt/
+         ifneq (,$(filter $(CONFIG_MTK_COMBO_CHIP), "CONSYS_6885"))
+             PATH_TO_BT_DRV       = $(srctree)/drivers/misc/mediatek/connectivity/bt/mt66xx/connac2
+             export _MTK_BT_CHIP=MTK_CONSYS_MT6885
+         else ifneq (,$(filter $(CONFIG_MTK_COMBO_CHIP), "CONSYS_6893"))
+             PATH_TO_BT_DRV       = $(srctree)/drivers/misc/mediatek/connectivity/bt/mt66xx/connac2
+             export _MTK_BT_CHIP=MTK_CONSYS_MT6893
+         else
+             PATH_TO_BT_DRV       = $(srctree)/drivers/misc/mediatek/connectivity/bt/mt66xx/legacy
+         endif
+         ABS_PATH_TO_BT_DRV       = $(PATH_TO_BT_DRV)
+         $(shell unlink $(srctree)/$(src)/bt)
+         $(shell ln -s $(ABS_PATH_TO_BT_DRV)      $(srctree)/$(src)/bt)
+         obj-y += bt/
         # @} For BT built-in mode end
 
 
