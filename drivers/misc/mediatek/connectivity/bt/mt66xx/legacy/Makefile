@@ -10,7 +10,7 @@ ifneq ($(KERNEL_OUT),)
 endif
 
 ifndef TOP
-    TOP := $(srctree)/..
+    TOP := $(srctree)
 endif
 
 ifneq ($(CFG_BT_PM_QOS_CONTROL),)

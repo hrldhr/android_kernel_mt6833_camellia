@@ -23,7 +23,7 @@ endif
 endif
 
 ifndef TOP
-    TOP := $(srctree)/..
+    TOP := $(srctree)
 endif
 
 USE_DEVICE_NODE := y

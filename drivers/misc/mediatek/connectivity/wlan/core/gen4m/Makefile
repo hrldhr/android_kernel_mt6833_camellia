@@ -20,7 +20,7 @@ ccflags-y += -DCFG_REMIND_IMPLEMENT
 endif
 
 ifndef TOP
-    TOP := $(srctree)/..
+    TOP := $(srctree)
 endif
 $(info os option: $(os))
 # ---------------------------------------------------
