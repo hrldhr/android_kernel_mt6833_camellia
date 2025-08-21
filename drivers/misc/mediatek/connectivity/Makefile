@@ -85,9 +85,9 @@ endif
         $(shell unlink $(srctree)/$(src)/wmt_chrdev_wifi)
         $(shell unlink $(srctree)/$(src)/wlan_drv_gen4m)
 
-        $(shell ln -s $(srctree)/drivers/misc/mediatek/connectivity/common $(srctree)/$(src)/wmt_drv)
-        $(shell ln -s $(srctree)/drivers/misc/mediatek/connectivity/wlan/adaptor $(srctree)/$(src)/wmt_chrdev_wifi)
-        $(shell ln -s $(srctree)/drivers/misc/mediatek/connectivity/wlan/core/gen4m $(srctree)/$(src)/wlan_drv_gen4m)
+        $(shell ln -s $(srctree)/drivers/misc/mediatek/connectivity/common $(srctree)/drivers/misc/mediatek/connectivity/wmt_drv)
+        $(shell ln -s $(srctree)/drivers/misc/mediatek/connectivity/wlan/adaptor $(srctree)/drivers/misc/mediatek/connectivity/wmt_chrdev_wifi)
+        $(shell ln -s $(srctree)/drivers/misc/mediatek/connectivity/wlan/core/gen4m $(srctree)/drivers/misc/mediatek/connectivity/wlan_drv_gen4m)
 
         # for gen4m options
         export CONFIG_MTK_COMBO_WIFI_HIF=axi
