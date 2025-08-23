@@ -19,8 +19,8 @@ jobs:
       KERNEL_DEFCONFIG: "camellia_defconfig"
       ARCH: arm64
       SUBARCH: arm64
-      KBUILD_BUILD_USER: "Konnlori"
-      KBUILD_BUILD_HOST: "Instance"
+      KBUILD_BUILD_USER: "builder"
+      KBUILD_BUILD_HOST: "hrldhr-build-component-vendor-114514-wccnxm-0721-yylx"
 
     steps:
       - name: Checkout repo
