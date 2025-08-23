@@ -19,7 +19,7 @@ ifeq ($(CONFIG_MACH_MT6833),y)
 MTK_DERIVED_PLATFORM := mt6833
 endif
 
-ARCH_MTK_PROJECT := $(subst ",,$(CONFIG_ARCH_MTK_PROJECT))
+ARCH_MTK_PROJECT := camellia
 IMGSENSOR_DRIVER_PATH  := $(srctree)/drivers/misc/mediatek/imgsensor/src
 MTK_DRIVER_PATH  := $(srctree)/drivers/misc/mediatek
 COMMON_VERSION := v1_1
