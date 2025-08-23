@@ -159,7 +159,7 @@ else
 endif
 
     $(MODULE_NAME)-objs += $($(FM_CHIP)-objs)
-    obj-$(CONFIG_MTK_FMRADIO) += private/
+    #obj-$(CONFIG_MTK_FMRADIO) += private/
 endif
 
 obj-y += dummy.o
