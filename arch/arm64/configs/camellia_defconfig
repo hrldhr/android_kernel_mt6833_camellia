@@ -5580,7 +5580,8 @@ CONFIG_SG_POOL=y
 CONFIG_ARCH_HAS_SG_CHAIN=y
 CONFIG_SBITMAP=y
 # CONFIG_STRING_SELFTEST is not set
-# 回来吧我的WIFI
+
+# ===== 回来吧我的WIFI =====
 CONFIG_WLAN_DRV_BUILD_IN=y
 
 # ===== 调试输出相关 =====
