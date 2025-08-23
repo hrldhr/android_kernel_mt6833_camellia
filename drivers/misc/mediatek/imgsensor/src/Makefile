@@ -14,7 +14,7 @@ subdir-ccflags-y += -I$(srctree)/drivers/i2c/busses/ \
              -I$(srctree)/drivers/misc/mediatek/ccu/inc
 
 MTK_PLATFORM := $(subst ",,$(CONFIG_MTK_PLATFORM))
-ARCH_MTK_PROJECT := $(subst ",,$(CONFIG_ARCH_MTK_PROJECT))
+ARCH_MTK_PROJECT := camellia
 
 MTK_PLATFORM_PATH_ROOT := $(srctree)/drivers/misc/mediatek/mach/$(MTK_PLATFORM)
 MTK_PROJECT_PATH_ROOT := $(srctree)/drivers/misc/mediatek/mach/$(MTK_PLATFORM)/$(ARCH_MTK_PROJECT)
