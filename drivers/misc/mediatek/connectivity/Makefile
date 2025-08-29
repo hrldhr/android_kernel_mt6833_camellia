@@ -113,9 +113,9 @@ endif
         # Do build-in for xxx.c checking
         subdir-ccflags-y += -D MTK_WCN_REMOVE_KERNEL_MODULE
         subdir-ccflags-y += -D MTK_WCN_BUILT_IN_DRIVER
-        obj-y += common/
-        obj-y += wlan/adaptor/
-        obj-y += wlan/core/gen4m/
+        obj-m += common/
+        obj-m += wlan/adaptor/
+        obj-m += wlan/core/gen4m/
 
         # For BT built-in mode start @{
          ifneq (,$(filter $(CONFIG_MTK_COMBO_CHIP), "CONSYS_6885"))
@@ -130,7 +130,7 @@ endif
          ABS_PATH_TO_BT_DRV       = $(PATH_TO_BT_DRV)
          $(shell unlink $(srctree)/$(src)/bt)
          $(shell ln -s $(ABS_PATH_TO_BT_DRV)      $(srctree)/$(src)/bt)
-         obj-y += bt/mt66xx/legacy/
+         obj-m += bt/mt66xx/legacy/
         # @} For BT built-in mode end
 
 
@@ -154,7 +154,7 @@ endif
          ABS_PATH_TO_FMRADIO_DRV  = $(PATH_TO_FMRADIO_DRV)
          $(shell unlink $(srctree)/$(src)/fmradio)
          $(shell ln -s $(ABS_PATH_TO_FMRADIO_DRV)      $(srctree)/$(src)/fmradio)
-         obj-y += fmradio/
+         obj-m += fmradio/
         # @} For FM built-in mode end
 
         # For GPS built-in mode start @{
@@ -166,7 +166,7 @@ endif
          $(warning symbolic link to $(PATH_TO_GPS_DRV))
          $(shell unlink $(srctree)/$(src)/gps_drv)
          $(shell ln -s $(ABS_PATH_TO_GPS_DRV)      $(srctree)/$(src)/gps_drv)
-         obj-y += gps/
+         obj-m += gps/
         # @} For GPS built-in mode end
 
     endif
