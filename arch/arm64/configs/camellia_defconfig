@@ -5582,7 +5582,7 @@ CONFIG_SBITMAP=y
 # CONFIG_STRING_SELFTEST is not set
 
 # ===== 回来吧我的WIFI =====
-CONFIG_WLAN_DRV_BUILD_IN=y
+CONFIG_WLAN_DRV_BUILD_IN=m
 CONFIG_WLAN_DRV=m
 
 # ===== 调试输出相关 =====
