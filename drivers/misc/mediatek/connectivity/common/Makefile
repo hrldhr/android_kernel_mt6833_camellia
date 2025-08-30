@@ -105,8 +105,8 @@ ifneq ($(filter "MT6632",$(CONFIG_MTK_COMBO_CHIP)),)
     ccflags-y += -D MERGE_INTERFACE_SUPPORT
 endif
 
-#obj-y   +=  common_main/
-#obj-y   +=  common_detect/
+obj-y   +=  common_main/
+obj-y   +=  common_detect/
 
 ifneq ($(filter MT6631,$(MTK_CONSYS_ADIE)),)
     ccflags-y += -D CONSYS_PMIC_CTRL_6635=0
