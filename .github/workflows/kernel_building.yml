@@ -20,7 +20,7 @@ jobs:
       ARCH: arm64
       SUBARCH: arm64
       KBUILD_BUILD_USER: "builder"
-      KBUILD_BUILD_HOST: "hrldhr-build-component-vendor-114514-wccnxm-0721-yylx"
+      KBUILD_BUILD_HOST: "hrldhr-build-component-vendor-11-camellia-cn-0721xm"
 
     steps:
       - name: Checkout repo
