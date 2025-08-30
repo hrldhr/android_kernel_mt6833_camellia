@@ -113,9 +113,9 @@ endif
         # Do build-in for xxx.c checking
         subdir-ccflags-y += -D MTK_WCN_REMOVE_KERNEL_MODULE
         subdir-ccflags-y += -D MTK_WCN_BUILT_IN_DRIVER
-        obj-m += common/
-        obj-m += wlan/adaptor/
-        obj-m += wlan/core/gen4m/
+        obj-y += common/
+        obj-y += wlan/adaptor/
+        obj-y += wlan/core/gen4m/
 
         # For BT built-in mode start @{
          ifneq (,$(filter $(CONFIG_MTK_COMBO_CHIP), "CONSYS_6885"))
