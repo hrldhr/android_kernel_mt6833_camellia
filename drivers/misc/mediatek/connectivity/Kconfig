@@ -447,3 +447,12 @@ config WLAN_DRV_BUILD_IN
 	  This will build the wlan driver and the corresponding componenets
 	  into the kernel.
 	  If unsure say n
+
+config CONFIG_MTK_CONNINFRA
+	bool "Enable MTK Connectivity Infrastructure support"
+	help
+	  This option enables support for the MediaTek Connectivity Infrastructure 
+	  (conninfra) subsystem. It provides common connectivity services for Wi-Fi, 
+	  Bluetooth, and other wireless technologies.
+
+	  If unsure say n

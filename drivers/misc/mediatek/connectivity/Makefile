@@ -35,7 +35,7 @@ endif
 
     # Do Nothing, move to standalone repo
     MODULE_NAME := connadp
-    obj-$(CONFIG_MTK_COMBO) += $(MODULE_NAME).o
+    obj-y += $(MODULE_NAME).o
     $(MODULE_NAME)-objs += common/connectivity_build_in_adapter.o
     $(MODULE_NAME)-objs += common/wmt_build_in_adapter.o
 
@@ -170,11 +170,14 @@ endif
         # @} For GPS built-in mode end
         
         # For Conninfra built-in mode start @{
-        # Build Conninfra
-           ifeq ($(CONFIG_MTK_CONNINFRA),y)
-           obj-y += conninfra/
-         endif
-        # @} For Conninfra built-in mode end   
+        # Build Conninfra only if CONFIG_MTK_CONNINFRA is set to y
+        #   ifeq ($(CONFIG_MTK_CONNINFRA),y)
+        #   $(info Building Conninfra module)
+        #   obj-y += conninfra/
+        #   else
+        #   $(info Skipping Conninfra module)
+        # endif
+        # @} For Conninfra built-in mode end
     endif
 
 # Otherwise we were called directly from the command line;
