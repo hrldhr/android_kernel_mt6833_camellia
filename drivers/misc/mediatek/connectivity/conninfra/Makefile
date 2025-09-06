@@ -71,12 +71,12 @@ ccflags-y += -Wno-error=format-extra-args
 
 ###############################################################################
 MODULE_NAME := conninfra
-ifeq ($(CONFIG_WLAN_DRV_BUILD_IN),y)
-$(warning $(MODULE_NAME) build-in boot.img)
-obj-y += $(MODULE_NAME).o
-else
+ifeq ($(CONFIG_WLAN_DRV_BUILD_IN),n)
 $(warning $(MODULE_NAME) is kernel module)
 obj-m += $(MODULE_NAME).o
+else
+$(warning $(MODULE_NAME) is not kernel module)
+obj-y += $(MODULE_NAME).o
 endif
 
 ###############################################################################

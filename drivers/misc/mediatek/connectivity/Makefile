@@ -40,10 +40,10 @@ endif
     $(MODULE_NAME)-objs += common/wmt_build_in_adapter.o
 
 
-    # Do build-in for Makefile checking
-    # export CONFIG_WLAN_DRV_BUILD_IN=y
+    # Do kernel module for Makefile checking
+      export CONFIG_WLAN_DRV_BUILD_IN=n
 
-    ifeq ($(CONFIG_WLAN_DRV_BUILD_IN),y)
+    ifeq ($(CONFIG_WLAN_DRV_BUILD_IN),n)
         $(info $$CONFIG_MTK_COMBO_CHIP is [${CONFIG_MTK_COMBO_CHIP}])
         MTK_PLATFORM_ID := $(patsubst CONSYS_%,%,$(subst ",,$(CONFIG_MTK_COMBO_CHIP)))
         $(info MTK_PLATFORM_ID is [${MTK_PLATFORM_ID}])
@@ -168,7 +168,12 @@ endif
          $(shell ln -s $(ABS_PATH_TO_GPS_DRV)      $(srctree)/$(src)/gps_drv)
          obj-y += gps/
         # @} For GPS built-in mode end
-
+        
+        # For Conninfra built-in mode start @{
+        # Build Conninfra
+           ifeq ($(CONFIG_MTK_CONNINFRA),y)
+           obj-y += conninfra/
+        # @} For Conninfra built-in mode end   
     endif
 
 # Otherwise we were called directly from the command line;

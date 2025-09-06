@@ -430,14 +430,14 @@ obj-$(CONFIG_MTK_COMBO_WIFI) += $(MODULE_NAME).o
 #obj-y += $(MODULE_NAME).o
 endif
 
-ifeq ($(CONFIG_WLAN_DRV_BUILD_IN),y)
+ifeq ($(CONFIG_WLAN_DRV_BUILD_IN),n)
 $(warning $(MODULE_NAME) is kernel module)
 obj-m += $(MODULE_NAME).o
 ccflags-y += -DCONFIG_WLAN_DRV_BUILD_IN=0
 else
-$(warning $(MODULE_NAME) is kernel module)
-obj-m += $(MODULE_NAME).o
-ccflags-y += -DCONFIG_WLAN_DRV_BUILD_IN=0
+$(warning $(MODULE_NAME) is not kernel module)
+obj-y += $(MODULE_NAME).o
+ccflags-y += -DCONFIG_WLAN_DRV_BUILD_IN=1
 endif
 
 # ---------------------------------------------------

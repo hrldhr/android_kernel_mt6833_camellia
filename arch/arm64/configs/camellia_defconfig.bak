@@ -5582,8 +5582,8 @@ CONFIG_SBITMAP=y
 # CONFIG_STRING_SELFTEST is not set
 
 # ===== 回来吧我的WIFI =====
-CONFIG_WLAN_DRV_BUILD_IN=n
-CONFIG_MTK_CONNINFRA=y
+CONFIG_WLAN_DRV_BUILD_IN=y
+
 # ===== 调试输出相关 =====
 CONFIG_CMDLINE_BOOL=y
 CONFIG_CMDLINE="initcall_debug printk.time=1 ignore_loglevel loglevel=8 printk.devkmsg=on"
