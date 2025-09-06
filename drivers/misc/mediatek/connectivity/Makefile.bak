@@ -173,7 +173,6 @@ endif
         # Build Conninfra
            ifeq ($(CONFIG_MTK_CONNINFRA),y)
            obj-y += conninfra/
-         endif
         # @} For Conninfra built-in mode end   
     endif
 
