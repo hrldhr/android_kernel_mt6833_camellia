@@ -218,14 +218,8 @@ static ssize_t palm_sensor_show(struct device *dev,
 struct device_attribute *attr, char *buf)
 {
 	struct xiaomi_touch_pdata *pdata = dev_get_drvdata(dev);
-/*BSP - 2021.01.09 - edit for palm sensor start */
-	struct xiaomi_touch *touch_dev = pdata->device;
-
-	wait_event_interruptible(touch_dev->wait_queue, pdata->palm_changed);
-/*BSP - 2021.01.09 - edit for palm sensor end */
 	pdata->palm_changed = false;
-
-	return snprintf(buf, PAGE_SIZE, "%d\n", pdata->palm_value);
+	return snprintf(buf, PAGE_SIZE, "%d\n", 0);
 }
 
 static ssize_t palm_sensor_store(struct device *dev,
