@@ -70,7 +70,7 @@ jobs:
             CLANG_TRIPLE=aarch64-linux-gnu- \
             CROSS_COMPILE=aarch64-linux-android- \
             CROSS_COMPILE_ARM32=arm-linux-androideabi-
-
+            LOCALVERSION=-g5799a62cc17b
       - name: Package kernel
         run: |
           git clone --depth=1 https://github.com/osm0sis/AnyKernel3 -b master AnyKernel3
@@ -87,7 +87,16 @@ jobs:
           if [[ -f out/arch/arm64/boot/dts/mediatek/camellia.dtb ]]; then
             cp out/arch/arm64/boot/dts/mediatek/camellia.dtb AnyKernel3/camellia.dtb
           fi
+          
+      - name: Compress out directory
+        run: tar -czf out_directory.tar.gz out/
 
+      - name: Upload out directory
+        uses: actions/upload-artifact@v4
+        with:
+          name: out-directory
+          path: out_directory.tar.gz
+      
       - name: Upload Kernel Artifact
         uses: actions/upload-artifact@v4
         with:
