@@ -5427,9 +5427,12 @@ CONFIG_ARCH_HAS_SG_CHAIN=y
 CONFIG_SBITMAP=y
 # CONFIG_STRING_SELFTEST is not set
 
-# ===== 回来吧我的WIFI =====
+# ===== 扩展功能 =====
 CONFIG_WLAN_DRV_BUILD_IN=n
-CONFIG_MTK_CONNINFRA=y
+CONFIG_MTK_CONNINFRA=n
+CONFIG_LOCALVERSION_AUTO=n
+CONFIG_KPROBES=y
+CONFIG_UNIX_DIAG=y
 # ===== 调试输出相关 =====
 CONFIG_CMDLINE_BOOL=y
 CONFIG_CMDLINE="initcall_debug printk.time=1 ignore_loglevel loglevel=8 printk.devkmsg=on"
