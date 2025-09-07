@@ -21,7 +21,8 @@ jobs:
       SUBARCH: arm64
       KBUILD_BUILD_USER: "builder"
       KBUILD_BUILD_HOST: "hrldhr-build-component-vendor-11-camellia-cn-0721xm"
-
+      LOCALVERSION: "-g5799a62cc17b"
+      
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -70,7 +71,7 @@ jobs:
             CLANG_TRIPLE=aarch64-linux-gnu- \
             CROSS_COMPILE=aarch64-linux-android- \
             CROSS_COMPILE_ARM32=arm-linux-androideabi-
-            LOCALVERSION=-g5799a62cc17b
+            
       - name: Package kernel
         run: |
           git clone --depth=1 https://github.com/osm0sis/AnyKernel3 -b master AnyKernel3
