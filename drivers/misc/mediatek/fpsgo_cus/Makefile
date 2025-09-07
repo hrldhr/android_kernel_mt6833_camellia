@@ -36,8 +36,7 @@
 FBT_TOP = $(srctree)/drivers/misc/mediatek/performance/fpsgo_v3/fbt
 MTK_TOP = $(srctree)/drivers/misc/mediatek/
 
-# 当配置为模块时设置编译标志
-ifneq ($(CONFIG_MTK_FPSGO_V3_MODULE),)
+ifeq ($(CONFIG_MTK_FPSGO_V3),$(filter $(CONFIG_MTK_FPSGO_V3),m))
 ccflags-y += -DCONFIG_MTK_FPSGO_V3
 subdir-ccflags-y += -DCONFIG_MTK_FPSGO_V3
 endif
@@ -47,16 +46,10 @@ ccflags-y += \
 	     -I$(MTK_TOP)/include/ \
 	     -I$(FBT_TOP)/include/ \
 
-# 关键修改：使用 obj-$(CONFIG_MTK_FPSGO_V3) 而不是固定的 obj-m
-obj-$(CONFIG_MTK_FPSGO_V3) += fpsgo.o
+obj-m += fpsgo.o
 fpsgo-y += src/fpsgo_main.o
 
-# 当配置为模块时添加特定文件
-ifneq ($(CONFIG_MTK_FPSGO_V3_MODULE),)
-fpsgo-y += src/xgf_v3_ko_quark.o
-else
-# 当配置为内置时添加架构相关文件
-ifneq ($(CONFIG_MTK_FPSGO_V3),)
+ifeq (y,$(CONFIG_MTK_FPSGO_V3))
 	ifeq (y,$(CONFIG_THUMB2_KERNEL))
 		fpsgo-y += src/xgf_v3_ko_thumb2.o
 	else
@@ -71,5 +64,8 @@ ifneq ($(CONFIG_MTK_FPSGO_V3),)
 			fpsgo-$(CONFIG_ARM64) += src/xgf_v3_ko_arm64.o
 		endif
 	endif
-endif
+else
+	ifeq (m,$(CONFIG_MTK_FPSGO_V3))
+		fpsgo-y += src/xgf_v3_ko_quark.o
+	endif
 endif
