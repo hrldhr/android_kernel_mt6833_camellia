@@ -89,17 +89,26 @@ jobs:
             cp out/arch/arm64/boot/dts/mediatek/camellia.dtb AnyKernel3/camellia.dtb
           fi
           
-      - name: Compress out directory
-        run: tar -czf out_directory.tar.gz out/
+      - name: Compress arch directory
+        run: tar -czf arch_directory.tar.gz out/arch
 
-      - name: Upload out directory
+      - name: Upload arch directory
         uses: actions/upload-artifact@v4
         with:
-          name: out-directory
-          path: out_directory.tar.gz
+          name: arch-directory
+          path: arch_directory.tar.gz
       
       - name: Upload Kernel Artifact
         uses: actions/upload-artifact@v4
         with:
           name: final-kernel
           path: AnyKernel3/*
+      
+      - name: Compress Modules
+        run: tar -czf modules.tar.gz out/drivers/misc/mediatek/connectivity/bt/mt66xx/legacy/bt_drv.ko out/drivers/misc/mediatek/connectivity/common/wmt_drv.ko out/drivers/misc/mediatek/connectivity/fmradio/fmradio_drv.ko out/drivers/misc/mediatek/connectivity/gps/gps_drv.ko out/drivers/misc/mediatek/connectivity/wlan/adaptor/wmt_chrdev_wifi.ko out/drivers/misc/mediatek/connectivity/wlan/core/gen4m/wlan_6833_axi.ko out/drivers/misc/mediatek/met_drv_v2/met.ko out/drivers/misc/mediatek/udc/udc_lib.ko out/drivers/video/backlight/lcd.ko out/kernel/kheaders.ko out/net/bridge/br_netfilter.ko out/net/ipv4/tcp_htcp.ko out/net/ipv4/tcp_westwood.ko
+
+      - name: Upload Modules
+        uses: actions/upload-artifact@v4
+        with:
+          name: modules
+          
